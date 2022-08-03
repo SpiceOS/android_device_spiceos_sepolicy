@@ -1,3 +1,5 @@
+#type sysfs_msm_subsys, sysfs_type, fs_type;
+
 # Allow NFC service to be found
 allow platform_app nfc_service:service_manager find;
 
@@ -11,4 +13,8 @@ hal_client_domain(platform_app, hal_lineage_livedisplay)
 hal_client_domain(platform_app, hal_lineage_powershare)
 
 # Allow SpiceOS Updater
-allow platform_app ota_package_file:dir { read open getattr search };
+allow platform_app ota_package_file:dir { open read write add_name remove_name getattr setattr map search unlink create};
+allow platform_app ota_package_file:file { open read write getattr setattr map unlink create};
+allow platform_app cache_recovery_file:dir { open read write add_name remove_name getattr setattr map search unlink create};
+allow platform_app cache_recovery_file:file { open read write getattr setattr map unlink create};
+allow platform_app recovery_service:service_manager { find };
