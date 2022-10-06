@@ -18,3 +18,5 @@ allow platform_app ota_package_file:file { open read write getattr setattr map u
 allow platform_app cache_recovery_file:dir { open read write add_name remove_name getattr setattr map search unlink create};
 allow platform_app cache_recovery_file:file { open read write getattr setattr map unlink create};
 allow platform_app recovery_service:service_manager { find };
+allow platform_app update_engine_service:service_manager { find };
+allow platform_app update_engine:binder { call transfer };
